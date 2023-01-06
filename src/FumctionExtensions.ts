@@ -4,11 +4,12 @@ export function times(count: number, func: (idx: Number) => void): void {
   }
 }
 
-// declare global {
-//   interface Number {
-//     times(func: (idx: Number) => void): void;
-//   }
-// }
+declare global {
+  interface Number {
+    times(func: (idx: Number) => void): void;
+  }
+}
 
-// Number.prototype.times = (func: (idx: Number) => void): void =>
-//   times(Number(this), func);
+Number.prototype.times = function (func: (idx: Number) => void): void {
+  times(Number(this), func);
+};
