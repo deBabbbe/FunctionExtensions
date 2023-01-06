@@ -14,8 +14,9 @@ declare global {
   }
 }
 
-Number.prototype.times = (func: (idx: Number) => void): void =>
+Number.prototype.times = function (func: (idx: Number) => void): void {
   times(Number(this), func);
+};
 
 Array.prototype.forAll = function (func: (entry: any) => void): void {
   this.forEach((element) => func(element));
