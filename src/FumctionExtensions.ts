@@ -1,4 +1,4 @@
-function times(count: number, func: (idx: Number) => void): void {
+export function times(count: number, func: (idx: Number) => void): void {
   for (let i = 0; i < count; i++) {
     func(i);
   }
@@ -14,12 +14,9 @@ declare global {
   }
 }
 
-Number.prototype.times = function (func: (idx: Number) => void): void {
+Number.prototype.times = (func: (idx: Number) => void): void =>
   times(Number(this), func);
-};
 
 Array.prototype.forAll = function (func: (entry: any) => void): void {
   this.forEach((element) => func(element));
 };
-
-export {};
